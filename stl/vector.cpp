@@ -136,7 +136,24 @@ int main()
     }
     cout<<"\n\n";
     
+    v3.erase(v3.begin()+1);//{12,34,45,56}
+    
+    v3.erase(v3.begin()+1,v3.begin()+3); //{12,56}
+    
+    v3.insert(v3.begin(),60); //{60,12,56}
+    
+    v3.insert(v3.begin()+1,4,10); //{60,10,10,10,10,12,56}
+    
+    vector<int> copy(2,50); //{50,50}
+    v3.insert(v3.begin(),copy.begin(),copy.end()); //v3.insert(v3.begin()+1,4,10); //{60,10,10,10,10,12,56}
+    
+    v3.pop_back(); //{60,10,10,10,10,12}
+    
+    v3.swap(copy); //v3 and copy got swapped
+    
+    v3.clear(); //erase everything
+    
+    cout<<v3.empty(); //if empty then 1, else 0
+    
     return 0;
 }
-
-
