@@ -5,6 +5,10 @@ using namespace std;
 int main()
 {
 
+    //push - O(log n)
+    //pop - O(1)
+    //top - O(1)
+    
     cout<<"Priority queue\n\n";
     
     priority_queue<int> pq;
