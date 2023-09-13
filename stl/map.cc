@@ -7,6 +7,7 @@ int main()
     //stores in a pair - KEY, VALUE. KEY is unique and VALUE can be duplicate
     // Both KEY and VALUE can any data type
     // Stores in accending order of KEY
+    // operations happen in O(log n)
     cout<<"Map\n\n";
     
     map<int,int> mapp; //1 KEY, 1 VALUE
