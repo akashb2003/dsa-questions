@@ -1,0 +1,58 @@
+1. Sorting:
+
+Array : sort(a, a + n); -- accending order
+        sort(a, a + n, greater<int>); -- descending order
+  
+Vector : sort(v.begin(), v.end());
+
+Sorted selected range of index:
+sort(a+2, a+4);
+
+2. 
+pair<int,int> a[] = {{1,2}.{2,1},{4,1}};
+
+Customized sorting: in given pair
+Sort it according to second element, if second element is same then sort it 
+according to 1st element but in descending order
+=>
+  
+bool my_comp(pair<int,int> p1, pair<int,int> p2)
+{
+  if(p1.second < p2.second) return true;
+  if(p1.second > p2.second) return false;
+  //if both are equal
+  if(p1.first > p2.first) return true;
+  return false;
+}
+
+sort(a, a+n, my_comp)
+
+3. 
+int num = 7;
+int cnt = __builtin_popcount(); // returns 3 -- 7 in binary is 111, 3 times 1 that's the answer 3
+
+long long num = 37129743917410;
+int cnt = __builtin_popcountll();
+
+4. Find all the permutations
+
+string s = "123";
+do{
+  cout<< s <<endl;
+} while (next_permutation(s.begin(), s.end()));
+
+make sure the number should start from its minimum value ie 123
+if its not EX 312, then make sort it
+
+Ex: 
+string s = "123";
+sort(s.begin, s.end()) //imp step
+
+do{
+  cout<< s <<endl;
+} while (next_permutation(s.begin(), s.end()));
+
+5. 
+ 
+int maxi = *max_element(a,a+n); //Find maximum element
+int mini = *min_element(a,a+n); //Find minimum element:
