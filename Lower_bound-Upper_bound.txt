@@ -1,0 +1,90 @@
+1. Binary search using STL
+
+A[] = {1,4,5,8,9}
+
+bool res = binary_search(a, a+n, 3) -- False
+bool res = binary_search(a, a+n, 4) -- True
+
+
+BOTH LOWER_BOUND AND UPPER_BOUND TAKES (log n) TIME COMPLEXITY
+ITS BETTER TO USE THESE STL FOR SEARCHING INSTEAD OF WRITING WHOLE BINARY CODE
+
+
+2. Lower bound function
+
+Case 1: Elemet found
+Lower bound function is used to search an element, if the element is found then it returns an iterator 
+which is pointing at the element. To get the index of the element we subtract
+strating element address of the array
+
+Case 2: Element not found
+If element is not found then the iterator will points towards to the next greater element. It can 
+be within the range or out of range of the array
+
+Ex:
+a[] = {1,4,5,6,9,9}
+
+int ind = lower_bound(a,a+n, 4) - a; -- returns 1 (index)
+int ind = lower_bound(a,a+n, 7) - a; -- returns 4 ( element not found, next greater element is 9 )
+int ind = lower_bound(a,a+n, 10) - a; -- returns 6 ( element not found, points to the next greater element of 9, out of index)
+
+Lower bound in vectors: 
+int low = lower_bound(v.begin(), v.end(), key) - v.begin();
+
+3. Upper bound function
+
+Case 1: Elemet found
+Upper bound function also is used to search an element, if the element is found then it will return an iterator 
+which points to the next position of the found element. To get the index of the element we subtract
+strating element address of the array
+
+Case 2: Element not found
+If element is not found then the iterator will points towards to the next greater element. It can 
+be within the range or out of range of the array
+
+Ex 1:
+a[] = {1,4,5,6,9,9}
+
+int ind = upper_bound(a,a+n, 4) - a; -- returns 2 (element found, hence points towards next element)
+int ind = upper_bound(a,a+n, 7) - a; -- returns 4 ( element not found, next greater element is 9 )
+int ind = upper_bound(a,a+n, 10) - a; -- returns 6 ( element not found, points to the next greater element of 9, out of index )
+
+Ex 2:
+Input : 10 20 30 30 40 50
+Output : upper_bound for element 30 is at index 4
+
+Upper bound in vectors: 
+int up = upper_bound(v.begin(), v.end(), key) - v.begin();
+
+Q1) If element exists return 1 else -1
+    a[] = {1,4,4,4,4,9,10}
+=> 
+Using lower_bound:
+int ind = lower_bound(a,a+n, X) - a;
+
+if( ind!=n && a[ind] == X) cout << ind;
+else cout<< -1;
+
+Using upper_bound:
+int ind = upper_bound(a,a+n, X) - a;
+ind--;
+
+if( ind>=0 && a[ind] == X) cout << ind;
+else cout<< -1;
+
+Q2) Find the larger number smaller than X in a sorted array. If no number exists print -1
+    a[] = {1,4,4,4,4,9,10}
+=> 
+int ind = lower_bound(a, a+n, X) -a;
+ind--;
+
+if(ind>=0) cout<< a[ind];
+else cout<<-1;
+
+Q3) Find the smallest number greater than X in a sorted array. If no number exists print -1
+    a[] = {1,4,4,4,4,9,10}
+=> 
+int ind = upper_bound(a, a+n, X) -a;
+
+if(ind<n) cout<< a[ind];
+else cout<<-1;
