@@ -5,3 +5,6 @@ In unordered_map can be done using 3 methods
 
 In dividon method, we find out the n%10 of each number and store number of times it appear
 Collison might takes place in very few cases that will take O(N) time
+
+In map KEY can be pair<int,int> and value int.
+But in unordered_map KEY cannot be a pair, it should be a single element
