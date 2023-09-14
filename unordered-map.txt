@@ -1,0 +1,7 @@
+In unordered_map can be done using 3 methods
+- Divison method
+- Folding method
+- Mid square method
+
+In dividon method, we find out the n%10 of each number and store number of times it appear
+Collison might takes place in very few cases that will take O(N) time
