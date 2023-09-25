@@ -14,6 +14,11 @@ public:
         int s=0, e= arr.size()-1, m = s+(e-s)/2;
 
         while(s<e){
+
+            if(arr[m]>arr[m+1] && arr[m]> arr[m-1]){
+                return m;
+            }
+            
             if(arr[m]>arr[m+1]){
                e = m;
             }
