@@ -14,7 +14,7 @@ array = [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1].........]
 */
 
 // Return the number in Pascal's Triangle of given rows and columns
-// Ex: r = 2, c = 1. 
+// Ex: r = 3, c = 2. 
 // Output = 2
 
 int answer(int r, int c){
