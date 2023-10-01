@@ -5,27 +5,19 @@
 class Solution {
 public:
     int subarraySum(vector<int>& nums, int k) {
-        int n = nums.size();
-        int count = 0, sum = 0;
-        unordered_map<int, int> prefixSum;
+        unordered_map<int, int> mapp;
+        mapp[0] = 1;
 
-        for (int i = 0; i < n; ++i) {
-            sum += nums[i];
+        int preSum = 0, cnt =0;
 
-            // Check if the current sum equals k
-            if (sum == k) {
-                count++;
-            }
-
-            // Check if there is a subarray with sum = current_sum - k
-            if (prefixSum.find(sum - k) != prefixSum.end()) {
-                count += prefixSum[sum - k];
-            }
-
-            // Update the prefix sum count
-            prefixSum[sum]++;
+        for(int i=0;i< nums.size(); i++){
+            preSum += nums[i];
+            int remove = preSum - k;
+            cnt+= mapp[remove];
+            mapp[preSum]++;
         }
 
-        return count;
+        return cnt;
     }
 };
+
