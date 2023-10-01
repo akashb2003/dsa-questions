@@ -1,4 +1,6 @@
-//Longest Successive Elements
+// Given an unsorted array of integers nums, return the length of the longest consecutive elements sequence.
+
+// You must write an algorithm that runs in O(n) time.
 
 int longestSuccessiveElements(vector<int>&a) {
     // Write your code here.
@@ -27,3 +29,30 @@ int longestSuccessiveElements(vector<int>&a) {
 
     return longest;
 }
+
+
+//                       OR                     //
+
+class Solution {
+public:
+    int longestConsecutive(vector<int>& nums) {
+        sort(nums.begin(),nums.end());
+        if(nums.size()==0)
+        return 0;
+  int cnt  = 1;
+  int maxi= 1;
+       for(int i = 1; i<nums.size(); i++){
+           if(nums[i]!=nums[i-1]){
+               if(nums[i]-nums[i-1]==1){
+                   cnt++;
+               }
+               else{
+                   maxi= max(maxi,cnt);
+                   cnt=1;
+                   
+               }
+           }
+       }
+       return max(maxi,cnt);
+    }
+};
