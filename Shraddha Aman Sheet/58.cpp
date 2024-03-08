@@ -30,3 +30,22 @@ bool findPair(int arr[], int size, int n){
     }
     return false;
 }
+
+// or
+
+bool findPair(int arr[], int size, int n){
+    
+    sort(arr, arr+size);
+    n = abs(n);
+    int i=0,j=1;
+    
+    while(i<=j && j<size){
+        int diff = arr[j]-arr[i];
+        
+        if(diff==n && i!=j) return true;
+        else if(diff>n) i++;
+        else j++;
+    }
+    
+    return false;
+}
