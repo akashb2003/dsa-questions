@@ -40,6 +40,10 @@ public:
         vector<vector<int>> ans;
         vector<int> output;
 
+        //add these 2 lines for more efficiency
+        sort(candidates.begin(),candidates.end());
+        candidates.erase(unique(candidates.begin(),candidates.end()),candidates.end());
+
         solve(candidates, target, 0,ans,output);
         return ans;
     }
