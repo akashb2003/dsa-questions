@@ -22,60 +22,60 @@
 //  * };
 //  */
 
+class Solution {
+public:
+
+    void help(vector<string> &ans, string tmp, TreeNode* root){
+        if(!root) return;
+        tmp += to_string(root->val);
+
+        if(root->left == NULL && root->right == NULL){
+            ans.push_back(tmp);
+        }
+        tmp+= "->";
+
+        help(ans,tmp,root->left);
+        help(ans,tmp,root->right);
+    }
+
+    vector<string> binaryTreePaths(TreeNode* root) {
+        vector<string> ans;
+        if(!root) return ans;
+        string tmp = "";
+
+        help(ans,tmp,root);
+        return ans;
+    }
+};
+
 // ///////////////////       OR         //////////////////
 
-// class Solution {
-// public:
-
-//     void help(vector<string> &ans, string tmp, TreeNode* root){
-//         if(!root) return;
-//         tmp += to_string(root->val);
-
-//         if(root->left == NULL && root->right == NULL){
-//             ans.push_back(tmp);
-//         }
-//         tmp+= "->";
-
-//         help(ans,tmp,root->left);
-//         help(ans,tmp,root->right);
-//     }
-
-//     vector<string> binaryTreePaths(TreeNode* root) {
-//         vector<string> ans;
-//         if(!root) return ans;
-//         string tmp = "";
-
-//         help(ans,tmp,root);
-//         return ans;
-//     }
-// };
-
-// class Solution {
-// public:
-//     void solve(TreeNode* root,vector<string>&ans,string s)
-//     {
-//         if(root->left==NULL && root->right==NULL)
-//         {
-//             s+=to_string(root->val);
-//             ans.push_back(s);
-//             return;
-//         }
-//         s+=to_string(root->val);
-//         s+="->";
-//         if(root->left)
-//         {
-//             solve(root->left,ans,s);
-//         }
-//         if(root->right)
-//         {
-//             solve(root->right,ans,s);
-//         }
-//     }
-//     vector<string> binaryTreePaths(TreeNode* root) 
-//     {
-//         string s="";
-//         vector<string>ans;
-//         solve(root,ans,s);
-//         return ans;
-//     }
-// };
+class Solution {
+public:
+    void solve(TreeNode* root,vector<string>&ans,string s)
+    {
+        if(root->left==NULL && root->right==NULL)
+        {
+            s+=to_string(root->val);
+            ans.push_back(s);
+            return;
+        }
+        s+=to_string(root->val);
+        s+="->";
+        if(root->left)
+        {
+            solve(root->left,ans,s);
+        }
+        if(root->right)
+        {
+            solve(root->right,ans,s);
+        }
+    }
+    vector<string> binaryTreePaths(TreeNode* root) 
+    {
+        string s="";
+        vector<string>ans;
+        solve(root,ans,s);
+        return ans;
+    }
+};
