@@ -12,22 +12,75 @@
 // so, total energy lost is 20 which is the minimum.
 
 
-class Solution {
-  public:
-    int minimumEnergy(vector<int>& height, int n) {
-        // Code here
-        if (n == 1) return 0; 
-        int prev=0, prev1=0;
+int help(int ind,vector<int> &arr){
+    if(ind<=0) return 0;
+    int left = help(ind-1,arr)+ abs(arr[ind]-arr[ind-1]);
+    int right = ind>1? help(ind-2,arr)+ abs(arr[ind]-arr[ind-2]): INT_MAX;
+
+    return min(left,right);
+}
+
+int frogJump(int n, vector<int> &arr)
+{
+    return help(n-1,arr);
+}
+
+//--------------------------------------------------------------------------------------------------------
+
+#include <bits/stdc++.h> 
+
+int help(int ind,vector<int> &arr,vector<int>&dp){
+    if(ind==0) return 0;
+    if(dp[ind]!=-1) return dp[ind];
+    int left = help(ind-1,arr,dp)+ abs(arr[ind]-arr[ind-1]);
+
+    int right = INT_MAX;
+    if(ind>1) right = help(ind-2,arr,dp)+ abs(arr[ind]-arr[ind-2]);
+
+    return dp[ind] = min(left,right);
+}
+
+int frogJump(int n, vector<int> &arr)
+{
+    vector<int>dp(n+1,-1);
+    return help(n-1,arr,dp);
+}
+
+//--------------------------------------------------------------------------------------------------------
+
+int frogJump(int n, vector<int> &arr)
+{
+    vector<int>dp(n,0);
+    for(int ind=1;ind<n;ind++){
         
-        for(int i=1; i<n; i++){
-            int ff = prev + abs(height[i]-height[i-1]);
-            int ss = INT_MAX;
-            if(i>1) ss = prev1 + abs(height[i]-height[i-2]);
-            
-            int curr = min(ff,ss);
-            prev1 = prev;
-            prev = curr;
-        }
-        return prev;
+        int left = dp[ind-1]+ abs(arr[ind]-arr[ind-1]);
+        int right = INT_MAX;
+        
+        if(ind>1) right = dp[ind-2]+ abs(arr[ind]-arr[ind-2]);
+
+        dp[ind] = min(left,right);
     }
-};
+    return dp[n-1];
+}
+
+//--------------------------------------------------------------------------------------------------------
+
+int frogJump(int n, vector<int> &arr)
+{
+    
+    int p1=0,p2=0;
+
+    for(int ind=1;ind<n;ind++){
+        
+        int left = p1+ abs(arr[ind]-arr[ind-1]);
+        int right = INT_MAX;
+        
+        if(ind>1) right = p2+ abs(arr[ind]-arr[ind-2]);
+
+        int curr = min(left,right);
+
+        p2 = p1;
+        p1 = curr;
+    }
+    return p1;
+}
